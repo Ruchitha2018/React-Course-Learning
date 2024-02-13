@@ -1,6 +1,10 @@
+import EventForm from "../components/EventForm";
+
 const NewEvent = () => {
     return (
-        <>NewEvent Page</>
+        <>
+            <EventForm />
+        </>
     )
 }
 
