@@ -13,8 +13,7 @@ const CartItem = (props) => {
   const addItemHandler = () => {
     dispatch(cartActions.addItem({
       id, title, price
-    }))
-    
+    }))   
   };
 
   return (
