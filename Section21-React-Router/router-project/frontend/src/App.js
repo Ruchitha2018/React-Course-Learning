@@ -2,13 +2,14 @@
 
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Events, { loader } from "./pages/Events";
-import EventDetails, { loader as EventDetailsLoader } from "./pages/EventDetails";
-import NewEvent, { action as newEventAction} from "./pages/NewEvent";
+import EventDetails, { loader as EventDetailsLoader, action as deleteEventAction } from "./pages/EventDetails";
+import NewEvent, { action as newEventAction } from "./pages/NewEvent";
 import EditEvent from "./pages/EditEvent";
 import EventsRoot from "./pages/EventsRoot";
 import HomeRoot from "./pages/HomeRoot";
 import Home from "./pages/Home";
 import Error from "./pages/Error";
+import { action as addFormAction } from "./components/EventForm";
 
 // 1. Add five new (dummy) page components (content can be simple <h1> elements)
 //    - HomePage
@@ -51,11 +52,15 @@ function App() {
               loader: EventDetailsLoader,
               id: 'event-detail',
               children: [
-                {index: true, element: <EventDetails />},
-                { path: 'edit', element: <EditEvent /> },
+                {
+                  index: true,
+                  element: <EventDetails />,
+                  action: deleteEventAction 
+                },
+                { path: 'edit', element: <EditEvent />, action: addFormAction },
               ]
             },
-            { path: 'new', element: <NewEvent />, action: newEventAction },
+            { path: 'new', element: <NewEvent />, action: addFormAction },
           ]
         },
 
